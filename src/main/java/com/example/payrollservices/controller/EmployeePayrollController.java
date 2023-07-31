@@ -34,7 +34,7 @@ public class EmployeePayrollController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ResponseDTO> updateEmployee(@PathVariable int id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<ResponseDTO> updateEmployee(@PathVariable int id, @Valid @RequestBody EmployeeDTO employeeDTO) {
         log.debug("Updating employee with ID: {}", id);
         Employee employee = employeeService.updateEmployee(id, employeeDTO);
         log.info("Employee updated successfully: {}", employee);
@@ -81,7 +81,6 @@ public class EmployeePayrollController {
     }
 
 
-
     @GetMapping("/all")
     public ResponseEntity<ResponseDTO> getAllEmployees() {
         log.debug("Retrieving all employees");
@@ -99,6 +98,14 @@ public class EmployeePayrollController {
         }
         return new ResponseEntity<>(responseDTO, status);
     }
+
+    @GetMapping("/department/{department}")
+    public ResponseEntity<ResponseDTO> getEmployeByDepartment(@PathVariable String department) {
+        List<Employee> employeeList = employeeService.getEmployeesByDepartment(department);
+        ResponseDTO response = new ResponseDTO("get call for department successfully", employeeList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
+
 }
 
 

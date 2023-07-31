@@ -18,4 +18,7 @@ public interface EmployeesService {
 
     List<Employee> getAllEmployee();
 
+     List<Employee>getEmployeesByDepartment(String department);
+
+
 }

@@ -1,6 +1,5 @@
 package com.example.payrollservices.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

@@ -25,9 +25,10 @@ public class EmpExceptionHandler  {
         return new ResponseEntity<>(respdto, HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler(EmpCustomException.class)
-    public ResponseEntity<ResponseDTO>handleMethodArgumentNotValidException(EmpCustomException exception){
+    public ResponseEntity<ResponseDTO>handleEmpCustomException(EmpCustomException exception){
         ResponseDTO respdto=new ResponseDTO("Exception while processing RESTAPI",exception.getMessage());
         return  new ResponseEntity<>(respdto,HttpStatus.BAD_REQUEST);
     }
+
 
 }
